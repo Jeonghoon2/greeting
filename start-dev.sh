@@ -16,7 +16,6 @@ if [ $(docker ps -q -f name=$SERVER_NAME) ]; then
   docker rmi $DOCKER_ID/$SERVER_NAME:$SERVER_VER
 fi
 
-
 # 도커 이미지 빌드
 echo "새로운 도커 이미지를 빌드 합니다."
 docker build -t $DOCKER_ID/$SERVER_NAME:$SERVER_VER .

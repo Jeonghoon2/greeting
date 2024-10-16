@@ -18,5 +18,5 @@ fi
 #다시 시작
 echo "> 애플리케이션을 다시 시작합니다..."
 nohup java \
-    -jar /build/libs/$JAR_FILE_NAME &
+    -jar build/libs/$JAR_FILE_NAME &
 echo "> 애플리케이션이 백그라운드에서 실행 중입니다."

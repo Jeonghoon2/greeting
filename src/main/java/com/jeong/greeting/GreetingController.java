@@ -1,7 +1,6 @@
 package com.jeong.greeting;
 
 import com.jeong.greeting.model.People;
-import com.jeong.greeting.model.People2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,12 +40,19 @@ public class GreetingController {
 
             /* 새로운 생성자 생성 */
             People people = new People(num, name);
+
+            /*People people = new People();
+
+            people.setNum(num);
+            people.setName(name);*/
+
             peopleStack.add(people);
         }
 
         model.addAttribute("peopleList", peopleStack);
 
         log.info(peopleStack.toString());
+
         return "greeting";
     }
 

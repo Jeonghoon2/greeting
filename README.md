@@ -1,5 +1,8 @@
 # Getting Started
 
+### Jenkins
+- localhost:8765
+
 ### API Reference
 
 - GET : /greeting

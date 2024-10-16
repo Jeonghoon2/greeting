@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SERVER_NAME=samdul-shop
-SERVER_VER=0.1.0
+SERVER_VER=0.0.1
 DOCKER_ID=ukidd12
 # 도커 컨테이너가 실행중인지 확인
 if [ $(docker ps -q -f name=$SERVER_NAME) ]; then

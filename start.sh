@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JAR_FILE_NAME=greeting-0.1.0-SNAPSHOT.jar
+JAR_FILE_NAME=greeting-0.0.1-SNAPSHOT.jar
 JAR_PATH=build/libs  # 실제 JAR 파일 경로로 변경
 
 # 실행 중인 애플리케이션의 PID 가져오기

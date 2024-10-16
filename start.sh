@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JAR_FILE_NAME=greeting-0.1.0-SNAPSHOT.jar
+JAR_FILE_NAME=greeting-0.0.1-SNAPSHOT.jar
 
 # 현재 실행 중인 pid 가져오기
 PID=$(pgrep -f $JAR_FILE_NAME)
@@ -18,5 +18,5 @@ fi
 #다시 시작
 echo "> 애플리케이션을 다시 시작합니다..."
 nohup java \
-    -jar $JAR_FILE_NAME &
+    -jar /build/libs/$JAR_FILE_NAME &
 echo "> 애플리케이션이 백그라운드에서 실행 중입니다."

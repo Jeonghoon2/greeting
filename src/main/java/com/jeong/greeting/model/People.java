@@ -9,7 +9,6 @@ public class People {
     private Integer num;
     private String name;
 
-
     public Integer getNum() {
         return num;
     }

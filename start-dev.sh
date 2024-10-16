@@ -3,6 +3,7 @@
 SERVER_NAME=samdul-shop
 SERVER_VER=0.0.1
 DOCKER_ID=ukidd12
+
 # 도커 컨테이너가 실행중인지 확인
 if [ $(docker ps -q -f name=$SERVER_NAME) ]; then
   # 실행 중인 컨테이너가 있을 경우, 컨테이너 종료
@@ -22,7 +23,7 @@ docker build -t $DOCKER_ID/$SERVER_NAME:$SERVER_VER .
 
 # 도커 컨테이너 실행
 echo "새로운 도커 컨테이너를 실행합니다."
-docker run -d --name $SERVER_NAME $DOCKER_ID/$SERVER_NAME:$SERVER_VER
+docker run -d -p 7070:8080 --name $SERVER_NAME $DOCKER_ID/$SERVER_NAME:$SERVER_VER
 
 # 정상적으로 컨테이너가 동작을 하는지 검사
 echo "도커 컨테이너의 상태를 검사합니다."

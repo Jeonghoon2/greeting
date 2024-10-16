@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting</title>
+    <script>
+        function sendData(event) {
+            event.preventDefault();  // 폼 제출을 막음
+
+            const nameInput = document.querySelector('input[name="name"]');
+            const name = nameInput.value.trim();  // 앞뒤 공백 제거
+
+            if (name) {
+                fetch('/greeting/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    },
+                    body: name
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('서버 응답 에러');
+                        }
+                        return response.text();
+                    })
+                    .then(result => {
+                        // 성공적으로 등록된 경우 alert로 메시지 표시
+                        alert(result);
+
+                        // 입력된 이름을 리스트에 추가
+                        const nameList = document.getElementById('nameList');
+                        const newNameItem = document.createElement('li');
+                        newNameItem.textContent = name;
+                        nameList.appendChild(newNameItem);
+
+                        // 입력 필드 초기화
+                        nameInput.value = '';
+                    })
+                    .catch(error => {
+                        // 에러 메시지를 alert로 표시
+                        alert('이름 등록 중 오류 발생: ' + error.message);
+                    });
+            } else {
+                alert('이름을 입력하세요.');
+            }
+        }
+
+        // 페이지가 로드될 때 서버에서 기존의 이름 리스트를 가져와서 표시
+        window.onload = function() {
+            fetch('/greeting', { method: 'GET' })
+                .then(response => response.text())
+                .then(html => {
+                    document.body.innerHTML = html;
+                })
+                .catch(error => console.error('Error:', error));
+        };
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <!-- 이름 입력 폼 -->
+    <form onsubmit="sendData(event)">
+        <label>
+            <input type="text" name="name" placeholder="이름을 입력하세요">
+        </label>
+        <button type="submit">이름 등록</button>
+    </form>
+
+    <!-- 이름 리스트 -->
+    <ul id="nameList">
+        <!-- 서버에서 기존 이름 리스트를 표시 -->
+        <li th:each="name : ${nameList}" th:text="${name}"></li>
+    </ul>
+
+</div>
+</body>
+</html>

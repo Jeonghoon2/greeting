@@ -4,7 +4,7 @@ FROM openjdk:17
 USER ukidd12:ukidd12
 
 # JAR 파일을 Docker 이미지 내부로 복사
-COPY build/libs/greeting-0.0.1-SNAPSHOT.jar /app.jar
+COPY greeting-0.0.1-SNAPSHOT.jar /app.jar
 
 # 컨테이너가 시작될 때 실행될 명령어
 CMD ["java", "-jar", "/app.jar"]

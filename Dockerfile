@@ -1,10 +1,7 @@
 # Spring 을 구동 하는 자바 버전과 일치 하게 자바 17을 설정
 FROM openjdk:17
 
-# Create the user and group
 RUN groupadd -r ukidd12 && useradd -r -g ukidd12 ukidd12
-
-# Switch to the newly created user
 USER ukidd12
 
 # JAR 파일을 Docker 이미지 내부로 복사

@@ -6,6 +6,7 @@ DOCKER_ID=ukidd12
 
 # 도커 컨테이너가 실행중인지 확인
 if [ $(docker ps -q -f name=$SERVER_NAME) ]; then
+
   # 실행 중인 컨테이너가 있을 경우, 컨테이너 종료
   # 도커 컨테이너 삭제
   echo "기존 도커 컨테이너의 실행을 종료합니다."
